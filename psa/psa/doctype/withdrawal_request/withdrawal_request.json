@@ -1,12 +1,15 @@
 {
  "actions": [],
- "autoname": "format: PSA-Withdrawal-Req-{YY}-{MM}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2024-03-19 02:02:08.889539",
  "default_view": "List",
  "doctype": "DocType",
+ "documentation": "/psa/\u0637\u0644\u0628-\u0627\u0644\u0627\u0646\u0633\u062d\u0627\u0628",
  "engine": "InnoDB",
  "field_order": [
   "student_information_section",
+  "student",
+  "column_break_lifw",
   "program_enrollment",
   "section_break_wwpw",
   "student_html1",
@@ -21,6 +24,7 @@
   "column_break_apfr",
   "request_date_html",
   "modified_request_date_html",
+  "naming_series",
   "attachments_tab",
   "attachment_section",
   "request_attachment",
@@ -29,7 +33,12 @@
   "financial_information_tab",
   "financial_status",
   "fees_information_tab",
-  "fees_status"
+  "fees_status",
+  "timeline_tab",
+  "timeline_section",
+  "column_break_ywwz",
+  "timeline_html",
+  "timeline_child_table"
  ],
  "fields": [
   {
@@ -37,10 +46,12 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": ".",
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
-   "label": "Student",
+   "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "permlevel": 3,
    "reqd": 1
   },
   {
@@ -53,12 +64,14 @@
    "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Reason",
+   "permlevel": 3,
    "reqd": 1
   },
   {
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -76,7 +89,8 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 3
   },
   {
    "fieldname": "amended_from",
@@ -95,19 +109,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Withdrawal Request",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
    "fieldname": "library_eviction",
    "fieldtype": "Attach",
-   "label": "Library Eviction"
+   "label": "Library Eviction",
+   "permlevel": 3
   },
   {
    "fieldname": "financial_status",
@@ -115,7 +120,7 @@
    "label": "Financial Status",
    "mandatory_depends_on": "eval: doc.status == 'Approval Pending by Finance Officer'",
    "options": "\nPaid\nNot Paid",
-   "read_only": 1
+   "permlevel": 2
   },
   {
    "collapsible": 1,
@@ -154,7 +159,8 @@
   {
    "fieldname": "request_attachment",
    "fieldtype": "Attach",
-   "label": "Request Attachment"
+   "label": "Request Attachment",
+   "permlevel": 3
   },
   {
    "fieldname": "column_break_izwn",
@@ -174,16 +180,59 @@
    "fieldname": "attachment_section",
    "fieldtype": "Section Break",
    "hidden": 1
+  },
+  {
+   "fieldname": "timeline_tab",
+   "fieldtype": "Tab Break",
+   "label": "Timeline"
+  },
+  {
+   "fieldname": "timeline_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ywwz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timeline_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "timeline_child_table",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "options": "Timeline Child Table",
+   "read_only": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "permlevel": 3,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_lifw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Withdrawal-Req-.YY.-.MM.-.#####.",
+   "reqd": 1
   }
  ],
- "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 23:20:51.290248",
+ "modified": "2024-05-16 03:58:57.100093",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -202,9 +251,43 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
    "create": 1,
    "delete": 1,
    "if_owner": 1,
+   "read": 1,
+   "role": "Student",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "permlevel": 3,
    "read": 1,
    "role": "Student",
    "write": 1
@@ -222,6 +305,23 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Finance Officer",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Finance Officer",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Finance Officer"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -232,6 +332,22 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Director of Graduate Studies",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Director of Graduate Studies"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Director of Graduate Studies"
   },
   {
    "email": 1,
@@ -246,6 +362,21 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Archivist"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Archivist"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Archivist"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -255,6 +386,7 @@
    "share": 1
   }
  ],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

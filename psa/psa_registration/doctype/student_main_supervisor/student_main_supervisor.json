@@ -1,17 +1,27 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-05-05 18:04:59.317878",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "disable",
+  "enabled",
+  "section_break_jhrk",
+  "naming_series",
   "student",
-  "status",
-  "type",
-  "column_break_twux",
   "program_enrollment",
+  "column_break_twux",
   "supervisor",
+  "supervisor_name",
+  "type",
+  "status",
+  "section_break_apcp",
+  "reference_doctype",
+  "column_break_cdqb",
+  "document_name",
+  "section_break_fppk",
+  "pervious_supervisor",
   "section_break_gbik",
   "research_details_html"
  ],
@@ -45,12 +55,6 @@
    "options": "Program Enrollment"
   },
   {
-   "default": "0",
-   "fieldname": "disable",
-   "fieldtype": "Check",
-   "label": "Disable"
-  },
-  {
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
@@ -64,14 +68,74 @@
    "fieldname": "research_details_html",
    "fieldtype": "HTML",
    "label": "Research Details html"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PSA-Std-Sup-.YY.-.MM.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_apcp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "column_break_cdqb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_fppk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pervious_supervisor",
+   "fieldtype": "Link",
+   "label": "Pervious Supervisor",
+   "options": "Student Supervisor"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_jhrk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "supervisor.faculty_member_name",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-07 01:56:55.085003",
+ "modified": "2024-06-26 01:04:53.518053",
  "modified_by": "Administrator",
  "module": "PSA Registration",
+<<<<<<< HEAD:psa/psa_registration/doctype/student_main_supervisor/student_main_supervisor.json
  "name": "Student Main Supervisor",
+=======
+ "name": "Student Supervisor",
+ "naming_rule": "By \"Naming Series\" field",
+>>>>>>> 705536fd482b0e95405c5df7da733093ceef1de0:psa/psa_registration/doctype/student_supervisor/student_supervisor.json
  "owner": "Administrator",
  "permissions": [
   {
@@ -87,7 +151,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "supervisor_name"
 }

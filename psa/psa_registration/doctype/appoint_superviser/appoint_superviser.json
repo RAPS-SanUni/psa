@@ -23,7 +23,11 @@
    "fieldname": "student",
    "fieldtype": "Link",
    "label": "Student",
+<<<<<<< HEAD
    "options": "Request Main Supervisor"
+=======
+   "options": "Request Supervisor"
+>>>>>>> 705536fd482b0e95405c5df7da733093ceef1de0
   },
   {
    "fieldname": "column_break_fesy",
@@ -80,12 +84,20 @@
    "fieldname": "type",
    "fieldtype": "Data",
    "label": "Type",
+<<<<<<< HEAD
    "options": "Request Main Supervisor"
+=======
+   "options": "Request Supervisor"
+>>>>>>> 705536fd482b0e95405c5df7da733093ceef1de0
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2024-05-08 11:10:40.508491",
+=======
+ "modified": "2024-05-11 02:02:05.628438",
+>>>>>>> 705536fd482b0e95405c5df7da733093ceef1de0
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Appoint Superviser",

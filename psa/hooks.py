@@ -4,7 +4,7 @@ app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
 app_license = "mit"
-required_apps = ["wiki"]
+required_apps = ["wiki", "academia"]
 
 
 fixtures = [
@@ -12,12 +12,16 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Notification",
-    "PSA Settings"
+    "Wiki Space",
+    "Wiki Page",
+    "Translation",
+    "Email Account"
 ]
 
 
 app_include_js = [
     "/assets/psa/js/workflow_override.js",
+    "/assets/psa/js/psa_utils.js",
     ]
 
 
@@ -160,15 +164,36 @@ app_include_js = [
 # 	}
 # }
 
+
+doc_events = {
+    "Progress Report": {
+        "on_submit": "psa.tasks.cron.on_submit"
+    }
+}
+
 # Scheduled Tasks
 # ---------------
+
+
+#############################uncomment this scheduler##################################################################
+# Cron Scheduler that be triggered everyday at 12:00:00 AM
+scheduler_events = {
+	"cron":{
+		"0 0 * * *": [
+			"psa.tasks.cron.send_suspend_enrollment_notification",
+			"psa.tasks.cron.create_progress_report_and_notify",
+			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
+		]
+	}
+}
+#############################                          ###################################################################
 
 # scheduler_events = {
 # 	"all": [
 # 		"psa.tasks.all"
 # 	],
-# 	"daily": [
-# 		"psa.tasks.daily"
+# 	"daily": [		 
+#         "psa.tasks.daily"
 # 	],
 # 	"hourly": [
 # 		"psa.tasks.hourly"

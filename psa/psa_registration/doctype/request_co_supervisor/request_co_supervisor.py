@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ProceedingsApprovalSupervisorAndPlan(Document):
+class RequestCoSupervisor(Document):
 	pass

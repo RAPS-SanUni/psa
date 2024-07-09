@@ -2,52 +2,41 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-04-30 19:29:43.587440",
+ "creation": "2024-05-08 11:03:58.667853",
+ "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "student",
-  "research_title_english",
+  "student_name",
   "column_break_zmhv",
   "program_enrollment",
-  "type",
-  "research_title_arabic",
+  "supervisor",
+  "section_break_minj",
+  "research_title_english",
   "search",
+  "column_break_wifv",
+  "research_title_arabic",
   "section_break_bocy",
   "table_nzsh"
  ],
  "fields": [
   {
-   "fieldname": "search",
-   "fieldtype": "Text",
-   "label": "Search "
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "REQ-."
   },
   {
-   "fieldname": "student",
-   "fieldtype": "Link",
-   "label": "Student",
+   "fetch_from": "program_enrollment.student_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
    "options": "Student"
   },
   {
    "fieldname": "column_break_zmhv",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "research_title_arabic",
-   "fieldtype": "Small Text",
-   "label": "Research Title Arabic"
-  },
-  {
-   "fieldname": "research_title_english",
-   "fieldtype": "Small Text",
-   "label": "Research Title English"
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "REQ-."
   },
   {
    "fieldname": "program_enrollment",
@@ -56,10 +45,27 @@
    "options": "Program Enrollment"
   },
   {
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "label": "Type",
-   "options": "\nMain Supervisor\nCo-Supervisor"
+   "fieldname": "section_break_minj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fieldname": "search",
+   "fieldtype": "Text",
+   "label": "Search "
+  },
+  {
+   "fieldname": "column_break_wifv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
   },
   {
    "fieldname": "section_break_bocy",
@@ -70,14 +76,20 @@
    "fieldtype": "Table",
    "label": ".......",
    "options": "Request A Supervisor child"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Student Main Supervisor"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-07 00:35:42.346120",
+ "modified": "2024-05-08 11:09:39.097689",
  "modified_by": "Administrator",
  "module": "PSA Registration",
- "name": "Request A Supervisor",
+ "name": "Request Co-Supervisor",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

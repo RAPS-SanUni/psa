@@ -1,34 +1,28 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-04-01 01:03:43.845714",
+ "creation": "2024-05-07 22:30:20.079594",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "program_type_documents_section",
-  "document_type"
+  "faculty_member"
  ],
  "fields": [
   {
-   "fieldname": "document_type",
+   "fieldname": "faculty_member",
    "fieldtype": "Link",
-   "label": "Document Type",
-   "options": "Document Type"
-  },
-  {
-   "fieldname": "program_type_documents_section",
-   "fieldtype": "Section Break",
-   "label": "Program Type Documents"
+   "label": "Faculty Member",
+   "options": "Faculty Member"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-04-01 01:06:08.759050",
+ "modified": "2024-05-07 22:30:50.212911",
  "modified_by": "Administrator",
  "module": "PSA Registration",
- "name": "Program Type Documents",
+ "name": "Faculty Member And Supervisor",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

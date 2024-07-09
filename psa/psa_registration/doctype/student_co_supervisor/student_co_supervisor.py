@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ProgramTypeDocuments(Document):
+class StudentCoSupervisor(Document):
 	pass
